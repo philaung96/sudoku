@@ -7,7 +7,7 @@
 
 ## Project Description
 
-Explore the Rick and Morty universe as Mr. Meeseeks guide you through the different location. Each location will contain different residing characters to meet, and the individual info is presented as well.
+Web app version of a famous Japanese puzzle game 'sudoku'. This game is created for me to play mainly, since I sudoku a lot on my phone, but have to watch ads after each game. Hence, this, an ads-free sudoku for any like minded sudoku enjoyers.
 
 ## Wireframes
 
