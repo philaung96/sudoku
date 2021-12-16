@@ -80,7 +80,7 @@ Time frames are also key in the development cycle. You have limited time to code
 | Score               |    M     |      1hrs      |             |
 | Local storage       |    M     |      2hrs      |             |
 | Leaderboard         |    L     |     10hrs      |             |
-| Total               |          |                |    65hrs    |
+| Total               |          |     65hrs      |             |
 
 ## Additional Libraries
 
