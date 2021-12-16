@@ -13,10 +13,10 @@ Explore the Rick and Morty universe as Mr. Meeseeks guide you through the differ
 
 Upload images of wireframe to cloudinary and add the link here with a description of the specific wireframe. Also, define the the React components and the architectural design of your app.
 
-- [Landing Page] (https://imgur.com/a/petBG3E)
-- [Game Page] (https://imgur.com/a/Sq8scf4)
-- [About Page] (https://imgur.com/a/3ZrSwzc)
-- [Leaderboard Page (PostMVP)] (https://imgur.com/a/J4fWKay)
+- [Landing Page](https://imgur.com/a/petBG3E)
+- [Game Page](https://imgur.com/a/Sq8scf4)
+- [About Page](https://imgur.com/a/3ZrSwzc)
+- [Leaderboard Page (PostMVP)](https://imgur.com/a/J4fWKay)
 
 ## Reach Architecture Tree
 
