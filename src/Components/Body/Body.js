@@ -1,3 +1,4 @@
+import './Body.css';
 import { Routes, Route } from 'react-router-dom';
 import Menu from './Menu/Menu';
 import Game from './Game/Game';

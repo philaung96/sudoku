@@ -1,4 +1,5 @@
-import Grid from './Grid';
+import './Game.css'
+import Grid from './Grid/Grid';
 
 const Game = () => {
 	return (
