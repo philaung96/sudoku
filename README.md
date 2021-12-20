@@ -90,8 +90,18 @@ Use this section to list all supporting libraries and their role in the project 
 
 Use this section to include a brief code snippet of functionality that you are proud of an a brief description. Code snippet should not be greater than 10 lines of code.
 
+### Creating and initializing a nested array
+
+[Original](https://stackoverflow.com/questions/16512182/how-to-create-empty-2d-array-in-javascript)
+
+```js
+var myGrid = [...Array(6)].map((e) => Array(6));
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+
+This is how I created 4d array based on the code snippet above
+
+```js
+const tempGrid = [...Array(3)].map((outerRow) =>
+	[...Array(3)].map((outerCol) => [...Array(3)].map((innerRow) => Array(3)))
+);
 ```
