@@ -5,22 +5,54 @@ const Grid = () => {
 	const [grid, setGrid] = useState([]);
 	let gridJsx = [];
 
+	// determines whether a number is valid to be added
+	// to the current position
+	// num -> the number to be added -> int
+	// index -> 1d index of inner 2d array of num -> int
+	// outerRow -> index of outer row -> int
+	// outerCol -> index of outer column -> int
+	// grid -> 4d grid of objects -> [[[[{}]]]]
 	const canAdd = (num, index, outerRow, outerCol, grid) => {
 		const innerRow = Math.floor(index / 3);
 		const innerCol = index % 3;
 
+		// if there is a number at current position
+		// return false
 		if (grid[outerRow][outerCol][innerRow][innerCol]) return false;
 
+		// for each outer column of current outer row,
+		// check every inner column of current inner row
+		// if any tile is same as num return false
+		// [-][-][-] [-][-][-] [-][-][-]
+		// [-][x][-] [o][o][o] [o][o][o]
+		// [-][-][-] [-][-][-] [-][-][-]
+		// ...
 		for (let i = 0; i < 3; i++)
 			if (i !== outerCol)
 				for (let j = 0; j < 3; j++)
 					if (grid[outerRow][i][innerRow][j] === num) return false;
 
+		// for each outer row of current outer column,
+		// check every inner row of current inner column
+		// if any tile is same as num return false
+		// [-][-][-] ...
+		// [-][-][x] ...
+		// [-][-][-] ...
+		//
+		// [-][-][o] ...
+		// [-][-][o] ...
+		// [-][-][o] ...
+		//
+		// [-][-][o] ...
+		// [-][-][o] ...
+		// [-][-][o] ...
 		for (let i = 0; i < 3; i++)
 			if (i !== outerRow)
 				for (let j = 0; j < 3; j++)
 					if (grid[i][outerCol][j][innerCol] === num) return false;
 
+		// return true by default if any number same as
+		// current not found on right or bottom
 		return true;
 	};
 
@@ -40,42 +72,59 @@ const Grid = () => {
 		);
 
 		// Fill the 4d array with random values
-
+		// iterate each outer row
 		for (let outerRow = 0; outerRow < 3; outerRow++)
+			// iterate each outer column
 			for (let outerCol = 0; outerCol < 3; outerCol++) {
+				// empty tiles of inner 2d array
+				// to keep track of number 1-9 inside
+				// inner array
 				const emptySpots = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+				// iterate 1 through 9
 				for (let num = 1; num < 10; num++) {
-					const clone = [...emptySpots];
-					// choose a random index for a
-					// specific number
-					let random = Math.floor(Math.random() * clone.length);
+					// create a clone of inner array
+					// indices to keep track of the index
+					// which a number can be placed
+					const emptyClone = [...emptySpots];
 
-					// if there is a number at random
-					// index or the number cannot be
-					// added to that index
+					// generate a random number from
+					// index clone array
+					let random = Math.floor(Math.random() * emptyClone.length);
+
+					// if there is an index to check and
+					// the number cannot be added to
+					// random index
 					while (
-						clone.length > 0 &&
-						!canAdd(num, clone[random], outerRow, outerCol, tempGrid)
+						emptyClone.length > 0 &&
+						!canAdd(num, emptyClone[random], outerRow, outerCol, tempGrid)
 					) {
-						clone.splice(random, 1);
+						// delete the current random
+						// index
+						emptyClone.splice(random, 1);
 						// find a new random index
-						random = Math.floor(Math.random() * clone.length);
+						random = Math.floor(Math.random() * emptyClone.length);
 					}
-					if (clone.length === 0) {
+					// if there is no index for current
+					// number to be added on
+					if (emptyClone.length === 0) {
+						// reset the 4d array
 						tempGrid = [...Array(3)].map((outerRow) =>
 							[...Array(3)].map((outerCol) =>
 								[...Array(3)].map((innerRow) => Array(3))
 							)
 						);
+						//reset outer row
 						outerRow = 0;
+						//reset the outer column
 						outerCol = -1;
+						// break out of current loop
 						break;
 					} else {
 						// turn 1d index into 2d row and col
-						const innerRow = Math.floor(clone[random] / 3);
-						const innerCol = clone[random] % 3;
+						const innerRow = Math.floor(emptyClone[random] / 3);
+						const innerCol = emptyClone[random] % 3;
 
-						emptySpots.splice(emptySpots.indexOf(clone[random]), 1);
+						emptySpots.splice(emptySpots.indexOf(emptyClone[random]), 1);
 
 						// set the number at the position
 						// where it should be
