@@ -71,9 +71,9 @@ Time frames are also key in the development cycle. You have limited time to code
 
 | Component           | Priority | Estimated Time | Actual Time |
 | ------------------- | :------: | :------------: | :---------: |
-| Setting up App      |    H     |      1hrs      |             |
-| Setting up Routes   |    H     |      2hrs      |             |
-| Setting up game     |    H     |     40hrs      |             |
+| Setting up App      |    H     |      1hrs      |    .5hr     |
+| Setting up Routes   |    H     |      2hrs      |    .5hr     |
+| Setting up game     |    H     |     40hrs      |    25hrs    |
 | Game functionality  |    H     |      5hrs      |             |
 | Difficulty settings |    H     |      2hrs      |             |
 | Timer               |    M     |      2hrs      |             |
