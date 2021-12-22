@@ -2,3 +2,8 @@ body {
 	background: linear-gradient(205deg, #f3ffc6, #caffbf);
 	text-align: center;
 }
+
+a {
+	text-decoration: none;
+	color: black;
+}

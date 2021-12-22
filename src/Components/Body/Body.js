@@ -7,7 +7,6 @@ import About from './About/About';
 const Body = () => {
 	return (
 		<div>
-			Body
 			<Routes>
 				<Route path='/' element={<Menu />} />
 				<Route path='/game' element={<Game />} />
