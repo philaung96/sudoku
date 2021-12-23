@@ -10,21 +10,13 @@ const Game = () => {
 	const selectTile = (e, tile) => {
 		if (!tile.show) {
 			selected = tile;
-			console.log(selected, $('.tile:nth-child(1)'));
-			// $('.tile')[selected.pos].firstChild.addClass('border-red');
-			$('.tile')[selected.pos].outerHTML =
-				'<div class="tile"><button class="border-red"></button></div>';
+			console.log(selected);
 		} else selected = null;
 	};
 	const selectAnswer = (e, answer) => {
 		console.log(answer, selected);
 		if (answer === selected.num)
-			$('.tile')[
-				selected.pos
-			].outerHTML = `<div class="tile"><button>${answer}</button></div>`;
-		else
-			$('.tile')[selected.pos].outerHTML =
-				'<div class="tile"><button></button></div>';
+			$('.tile')[selected.pos].innerHTML = `<button>${answer}</button>`;
 	};
 
 	return (
