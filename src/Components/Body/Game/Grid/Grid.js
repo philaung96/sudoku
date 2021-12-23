@@ -1,7 +1,8 @@
 import './Grid.css';
 import { useEffect, useState } from 'react';
+import Tile from './Tile/Tile';
 
-const Grid = () => {
+const Grid = (props) => {
 	const [grid, setGrid] = useState([]);
 	let gridJsx = [];
 
@@ -30,7 +31,11 @@ const Grid = () => {
 		for (let i = 0; i < 3; i++)
 			if (i !== outerCol)
 				for (let j = 0; j < 3; j++)
-					if (grid[outerRow][i][innerRow][j] === num) return false;
+					if (
+						grid[outerRow][i][innerRow][j] &&
+						grid[outerRow][i][innerRow][j].num === num
+					)
+						return false;
 
 		// for each outer row of current outer column,
 		// check every inner row of current inner column
@@ -49,7 +54,11 @@ const Grid = () => {
 		for (let i = 0; i < 3; i++)
 			if (i !== outerRow)
 				for (let j = 0; j < 3; j++)
-					if (grid[i][outerCol][j][innerCol] === num) return false;
+					if (
+						grid[i][outerCol][j][innerCol] &&
+						grid[i][outerCol][j][innerCol].num === num
+					)
+						return false;
 
 		// return true by default if any number same as
 		// current not found on right or bottom
@@ -124,11 +133,25 @@ const Grid = () => {
 						const innerRow = Math.floor(emptyClone[random] / 3);
 						const innerCol = emptyClone[random] % 3;
 
+						// delete the index from empty
+						// spots since it will be
+						// occupied by a number
 						emptySpots.splice(emptySpots.indexOf(emptyClone[random]), 1);
 
+						// get a random number from 1-100
+						const showPercent = Math.ceil(Math.random() * 100);
+						// hide ~60% of the tiles
+						// if random is more than 40
+						// hide the tile
+						let show = true;
+						if (showPercent > 40) show = false;
 						// set the number at the position
 						// where it should be
-						tempGrid[outerRow][outerCol][innerRow][innerCol] = num;
+						tempGrid[outerRow][outerCol][innerRow][innerCol] = {
+							num: num,
+							show: show,
+							pos: (outerRow * 3 + outerCol) * 9 + (innerRow * 3 + innerCol),
+						};
 					}
 				}
 			}
@@ -151,14 +174,7 @@ const Grid = () => {
 				<div className='inner-grid' key={outerRowIndex * 3 + outerColIndex}>
 					{outerCol.map((innerRow, innerRowIndex) =>
 						innerRow.map((innerCol, innerColIndex) => (
-							<div
-								className='tile'
-								key={
-									(outerRowIndex * 3 + outerColIndex) * 9 +
-									(innerRowIndex * 3 + innerColIndex)
-								}>
-								<p>{innerCol}</p>
-							</div>
+							<Tile tile={innerCol} selectTile={props.selectTile} />
 						))
 					)}
 				</div>

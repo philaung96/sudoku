@@ -1,9 +1,10 @@
 body {
 	background: linear-gradient(205deg, #f3ffc6, #caffbf);
 	text-align: center;
+	color: #03045e;
 }
 
 a {
 	text-decoration: none;
-	color: black;
+	color: #03045e;
 }

@@ -4,13 +4,13 @@ const Header = () => {
 	return (
 		<header>
 			<Link to='/'>
-				<h1>MENU</h1>
+				<h3>MENU</h3>
 			</Link>
 			<Link to='game'>
-				<h1>GAME</h1>
+				<h3>GAME</h3>
 			</Link>
 			<Link to='about'>
-				<h1>ABOUT</h1>
+				<h3>ABOUT</h3>
 			</Link>
 		</header>
 	);

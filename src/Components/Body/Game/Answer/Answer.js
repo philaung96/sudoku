@@ -1,9 +1,11 @@
 import './Answer.css';
 
-const Answer = () => {
+const Answer = (props) => {
 	const answerJsx = [...Array(9)].map((e, index) => (
 		<div className='tile' key={index}>
-			{index + 1}
+			<button type='submit' onClick={(e) => props.selectAnswer(e, index + 1)}>
+				{index + 1}
+			</button>
 		</div>
 	));
 	return <div id='answers'>{answerJsx}</div>;

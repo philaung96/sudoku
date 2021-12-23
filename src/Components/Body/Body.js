@@ -6,13 +6,13 @@ import About from './About/About';
 
 const Body = () => {
 	return (
-		<div>
+		<main>
 			<Routes>
 				<Route path='/' element={<Menu />} />
 				<Route path='/game' element={<Game />} />
 				<Route path='/about' element={<About />} />
 			</Routes>
-		</div>
+		</main>
 	);
 };
 

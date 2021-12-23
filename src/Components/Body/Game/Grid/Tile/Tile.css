@@ -1,0 +1,17 @@
+.tile {
+    background: linear-gradient(143deg, #9b9aff, #afb1ff);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile button {
+    height: 30px;
+    width: 30px;
+    background: transparent;
+    color: #03045e;
+    font-size: 15px;
+    font-weight: bolder;
+    /* border: none; */
+}
